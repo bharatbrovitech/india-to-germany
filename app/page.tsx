@@ -1,12 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
 import {
-  MapPin,
-  Plane,
   FileText,
   Users,
   Home,
@@ -14,418 +8,324 @@ import {
   Phone,
   Mail,
   Clock,
-  CheckCircle,
   Star,
-  Globe,
-  Shield,
-  Heart,
+  ArrowRight,
+  Building2,
+  GraduationCap,
+  TrendingUp,
 } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 
 export default function GermanyServicesWebsite() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-          <div className="flex items-center space-x-2">
-            <MapPin className="h-6 w-6 text-red-600" />
-            <span className="text-xl font-bold">GermanyGuide</span>
-          </div>
-          <nav className="hidden md:flex items-center space-x-6">
-            <Link href="#services" className="text-sm font-medium hover:text-red-600 transition-colors">
-              Services
-            </Link>
-            <Link href="#about" className="text-sm font-medium hover:text-red-600 transition-colors">
-              About
-            </Link>
-            <Link href="#testimonials" className="text-sm font-medium hover:text-red-600 transition-colors">
-              Testimonials
-            </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-red-600 transition-colors">
-              Contact
-            </Link>
+      <header className="w-full bg-white border-b border-gray-100">
+        <div className="container mx-auto px-6 py-4">
+          <nav className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="text-lg font-medium text-gray-900">IndiaToGermany</span>
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="#visa" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Visa Help
+              </Link>
+              <Link href="#housing" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Housing & Anmeldung
+              </Link>
+              <Link href="#jobs" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Jobs
+              </Link>
+              <Link href="#groceries" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Groceries
+              </Link>
+              <Link href="#contact" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                Contact
+              </Link>
+            </div>
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6">Get Started</Button>
           </nav>
-          <Button className="bg-red-600 hover:bg-red-700">Get Started</Button>
         </div>
       </header>
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-red-50 to-yellow-50">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <Badge className="bg-red-100 text-red-800 hover:bg-red-100">🇩🇪 Your Gateway to Germany</Badge>
-                  <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Your Journey to Germany Starts Here
-                  </h1>
-                  <p className="max-w-[600px] text-gray-600 md:text-xl">
-                    Whether you're migrating for a new life or planning the perfect vacation, we provide comprehensive
-                    services to make your German experience seamless and unforgettable.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-red-600 hover:bg-red-700">
-                    <Plane className="mr-2 h-4 w-4" />
-                    Plan Your Journey
-                  </Button>
-                  <Button variant="outline" size="lg" className="border-red-600 text-red-600 hover:bg-red-50">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Free Consultation
-                  </Button>
-                </div>
-                <div className="flex items-center space-x-4 text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <CheckCircle className="mr-1 h-4 w-4 text-green-600" />
-                    500+ Happy Clients
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="mr-1 h-4 w-4 text-green-600" />
-                    Expert Guidance
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="mr-1 h-4 w-4 text-green-600" />
-                    24/7 Support
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  width="600"
-                  height="400"
-                  alt="Germany landscape with castle"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section id="services" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Our Services</h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Comprehensive support for every aspect of your German journey
+        <section className="w-full py-20 md:py-32 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
+                  Moving to Germany from India?
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-500 font-light max-w-2xl mx-auto">
+                  Expert help for visas, jobs & more.
                 </p>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-2 lg:gap-12">
-              {/* Migration Services */}
-              <div className="space-y-6">
-                <div className="flex items-center space-x-2">
-                  <Home className="h-6 w-6 text-red-600" />
-                  <h3 className="text-2xl font-bold">Migration Services</h3>
-                </div>
-                <div className="grid gap-4">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <FileText className="h-5 w-5 text-blue-600" />
-                        <span>Visa & Documentation</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        Complete assistance with visa applications, work permits, and all required documentation for
-                        permanent relocation.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <Briefcase className="h-5 w-5 text-green-600" />
-                        <span>Job Placement</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        Connect with German employers, CV optimization, interview preparation, and career guidance in
-                        your field.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <Home className="h-5 w-5 text-purple-600" />
-                        <span>Housing Solutions</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        Find the perfect home with our housing search, rental assistance, and settlement support
-                        services.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+                <Button size="lg" className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 text-base">
+                  Start Your Journey
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 px-8 py-3 text-base">
+                  Free Consultation
+                </Button>
               </div>
 
-              {/* Vacation Services */}
-              <div className="space-y-6">
-                <div className="flex items-center space-x-2">
-                  <Plane className="h-6 w-6 text-red-600" />
-                  <h3 className="text-2xl font-bold">Vacation Services</h3>
-                </div>
-                <div className="grid gap-4">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <MapPin className="h-5 w-5 text-red-600" />
-                        <span>Custom Itineraries</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        Personalized travel plans covering Germany's best destinations, from historic castles to modern
-                        cities.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <Users className="h-5 w-5 text-orange-600" />
-                        <span>Guided Tours</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        Expert local guides for cultural tours, historical sites, and authentic German experiences.
-                      </p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <Shield className="h-5 w-5 text-teal-600" />
-                        <span>Travel Support</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-gray-600">
-                        24/7 travel assistance, booking management, and emergency support throughout your stay.
-                      </p>
-                    </CardContent>
-                  </Card>
+              <div className="pt-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-gray-900">1000+</div>
+                    <div className="text-sm text-gray-500">Successful Relocations</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-gray-900">95%</div>
+                    <div className="text-sm text-gray-500">Visa Success Rate</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-gray-900">24/7</div>
+                    <div className="text-sm text-gray-500">Expert Support</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-gray-50">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    Why Choose GermanyGuide?
-                  </h2>
-                  <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    With over 10 years of experience helping people achieve their German dreams, we're your trusted
-                    partner every step of the way.
-                  </p>
-                </div>
-                <div className="grid gap-4">
-                  <div className="flex items-start space-x-3">
-                    <Globe className="mt-1 h-5 w-5 text-red-600" />
-                    <div>
-                      <h4 className="font-semibold">Local Expertise</h4>
-                      <p className="text-gray-600">Deep knowledge of German culture, laws, and best practices.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Heart className="mt-1 h-5 w-5 text-red-600" />
-                    <div>
-                      <h4 className="font-semibold">Personalized Service</h4>
-                      <p className="text-gray-600">Tailored solutions that match your unique needs and goals.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Clock className="mt-1 h-5 w-5 text-red-600" />
-                    <div>
-                      <h4 className="font-semibold">End-to-End Support</h4>
-                      <p className="text-gray-600">From initial planning to successful settlement or return.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <Image
-                  src="/placeholder.svg?height=400&width=600"
-                  width="600"
-                  height="400"
-                  alt="Team helping clients"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section id="testimonials" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">What Our Clients Say</h2>
-                <p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Real stories from people who achieved their German dreams with our help
+        {/* Services Grid */}
+        <section className="w-full py-20 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Everything you need for Germany</h2>
+                <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                  From visa applications to finding your first apartment, we've got you covered.
                 </p>
               </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 lg:grid-cols-3 lg:gap-8">
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <CardTitle>Sarah M.</CardTitle>
-                  <CardDescription>Software Engineer - Migration Client</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    "GermanyGuide made my dream of working in Berlin a reality. From visa processing to finding the
-                    perfect apartment, they handled everything professionally."
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <CardTitle>James & Lisa K.</CardTitle>
-                  <CardDescription>Vacation Clients</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    "Our 2-week German adventure was perfectly planned. Every detail was taken care of, and we
-                    experienced Germany like locals. Absolutely unforgettable!"
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <CardTitle>Ahmed R.</CardTitle>
-                  <CardDescription>Medical Professional - Migration Client</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    "The job placement service was exceptional. They connected me with a hospital in Munich and guided
-                    me through the entire process. Highly recommended!"
-                  </p>
-                </CardContent>
-              </Card>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-6">
+                  <CardContent className="p-0">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                      <FileText className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Visa Processing</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Complete visa assistance including document preparation and application tracking.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-6">
+                  <CardContent className="p-0">
+                    <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                      <Briefcase className="h-6 w-6 text-green-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Job Placement</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Connect with German employers and get your dream job with our network.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-6">
+                  <CardContent className="p-0">
+                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                      <Home className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Housing & Anmeldung</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Find apartments and complete your registration with German authorities.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-6">
+                  <CardContent className="p-0">
+                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                      <Users className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Community Support</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed">
+                      Connect with Indian communities and find familiar groceries and restaurants.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section
-          id="contact"
-          className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-red-600 to-red-700 text-white"
-        >
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    Ready to Start Your German Journey?
-                  </h2>
-                  <p className="max-w-[600px] text-red-100 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Get in touch with our experts today for a free consultation. Let's make your German dreams come
-                    true.
-                  </p>
+        {/* Stats Section */}
+        <section className="w-full py-20 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                India-Germany: A Growing Partnership
+              </h2>
+              <p className="text-lg text-gray-500 mb-12">
+                Join thousands of Indians who have successfully made Germany their new home.
+              </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <div className="text-2xl font-bold text-gray-900">180K+</div>
+                  <div className="text-sm text-gray-500">Indians in Germany</div>
                 </div>
-                <div className="grid gap-4">
-                  <div className="flex items-center space-x-3">
-                    <Phone className="h-5 w-5" />
-                    <span>+1 (555) 123-4567</span>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <GraduationCap className="h-8 w-8 text-green-600" />
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="h-5 w-5" />
-                    <span>info@germanyguide.com</span>
+                  <div className="text-2xl font-bold text-gray-900">25K+</div>
+                  <div className="text-sm text-gray-500">Students Annually</div>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Building2 className="h-8 w-8 text-purple-600" />
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <Clock className="h-5 w-5" />
-                    <span>Mon-Fri: 9AM-6PM (EST)</span>
+                  <div className="text-2xl font-bold text-gray-900">1.7K+</div>
+                  <div className="text-sm text-gray-500">Indian Companies</div>
+                </div>
+
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="h-8 w-8 text-orange-600" />
                   </div>
+                  <div className="text-2xl font-bold text-gray-900">€24B+</div>
+                  <div className="text-sm text-gray-500">Trade Volume</div>
                 </div>
               </div>
-              <Card className="bg-white text-gray-900">
-                <CardHeader>
-                  <CardTitle>Get Your Free Consultation</CardTitle>
-                  <CardDescription>Fill out the form below and we'll get back to you within 24 hours.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name</Label>
-                      <Input id="firstName" placeholder="John" />
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="w-full py-20 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+                <p className="text-lg text-gray-500">Real experiences from Indians who made Germany their home.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <Card className="bg-white border-0 shadow-sm p-6">
+                  <CardContent className="p-0">
+                    <div className="flex items-center space-x-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      ))}
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" />
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      "The visa process was seamless. They handled everything from document preparation to interview
+                      coaching."
+                    </p>
+                    <div>
+                      <div className="font-semibold text-gray-900">Priya Sharma</div>
+                      <div className="text-sm text-gray-500">Software Engineer, Munich</div>
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="service">Service Interest</Label>
-                    <select className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
-                      <option value="">Select a service</option>
-                      <option value="migration">Migration Services</option>
-                      <option value="vacation">Vacation Planning</option>
-                      <option value="both">Both Services</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Tell us about your plans and how we can help..."
-                      className="min-h-[100px]"
-                    />
-                  </div>
-                  <Button className="w-full bg-red-600 hover:bg-red-700">Send Message</Button>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-0 shadow-sm p-6">
+                  <CardContent className="p-0">
+                    <div className="flex items-center space-x-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      "Found my dream job in Berlin within 3 months. Their network of employers is incredible."
+                    </p>
+                    <div>
+                      <div className="font-semibold text-gray-900">Rajesh Patel</div>
+                      <div className="text-sm text-gray-500">Data Scientist, Berlin</div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-white border-0 shadow-sm p-6">
+                  <CardContent className="p-0">
+                    <div className="flex items-center space-x-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      "They helped us find an apartment near an Indian temple and grocery stores. Perfect for our
+                      family."
+                    </p>
+                    <div>
+                      <div className="font-semibold text-gray-900">Dr. Arjun Mehta</div>
+                      <div className="text-sm text-gray-500">Medical Professional, Hamburg</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-20 bg-gray-900">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to start your German journey?</h2>
+              <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Get personalized guidance from our experts who understand the unique challenges faced by Indians moving
+                to Germany.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button size="lg" className="bg-white hover:bg-gray-100 text-gray-900 px-8 py-3 text-base">
+                  Get Free Consultation
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-gray-600 text-white hover:bg-gray-800 px-8 py-3 text-base"
+                >
+                  <Phone className="mr-2 h-4 w-4" />
+                  Call Now
+                </Button>
+              </div>
+
+              <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div className="flex items-center justify-center space-x-2 text-gray-300">
+                  <Phone className="h-4 w-4" />
+                  <span className="text-sm">+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-gray-300">
+                  <Mail className="h-4 w-4" />
+                  <span className="text-sm">info@indiatogermany.com</span>
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-gray-300">
+                  <Clock className="h-4 w-4" />
+                  <span className="text-sm">Mon-Fri: 9AM-6PM EST</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <div className="flex items-center space-x-2">
-          <MapPin className="h-5 w-5 text-red-600" />
-          <span className="text-sm font-medium">GermanyGuide</span>
+      <footer className="w-full py-8 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-900">IndiaToGermany</span>
+            </div>
+            <p className="text-xs text-gray-500">© 2024 IndiaToGermany. Making German dreams come true since 2014.</p>
+          </div>
         </div>
-        <p className="text-xs text-gray-600 sm:ml-auto">
-          © 2024 GermanyGuide. All rights reserved. Making German dreams come true.
-        </p>
       </footer>
     </div>
   )
