@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -17,6 +19,11 @@ import {
   Globe,
   CheckCircle,
   Zap,
+  X,
+  Send,
+  MapPin,
+  User,
+  BriefcaseIcon,
 } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
@@ -25,6 +32,18 @@ export default function GermanyServicesWebsite() {
   const [currentStep, setCurrentStep] = useState(0)
   const [animatedStats, setAnimatedStats] = useState({ users: 0, success: 0, support: 0 })
   const [selectedCity, setSelectedCity] = useState("berlin")
+  const [showInquiryForm, setShowInquiryForm] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    currentLocation: "",
+    preferredCity: "",
+    purpose: "",
+    timeline: "",
+    services: [],
+    comments: "",
+  })
 
   const journeySteps = [
     { icon: Heart, title: "Dream", desc: "Your German dream begins", color: "from-red-500 to-pink-500" },
@@ -73,6 +92,39 @@ export default function GermanyServicesWebsite() {
 
     animateStats()
   }, [])
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically send the data to your backend
+    console.log("Form submitted:", formData)
+    alert("Thank you! We will contact you within 24 hours.")
+    setShowInquiryForm(false)
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      currentLocation: "",
+      preferredCity: "",
+      purpose: "",
+      timeline: "",
+      services: [],
+      comments: "",
+    })
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleServiceToggle = (service: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }))
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50">
@@ -169,6 +221,7 @@ export default function GermanyServicesWebsite() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-10 py-4 text-lg rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => setShowInquiryForm(true)}
                 >
                   <Zap className="mr-2 h-5 w-5" />
                   Start Your Journey
@@ -177,6 +230,7 @@ export default function GermanyServicesWebsite() {
                   variant="outline"
                   size="lg"
                   className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 px-10 py-4 text-lg rounded-full"
+                  onClick={() => setShowInquiryForm(true)}
                 >
                   <Calendar className="mr-2 h-5 w-5" />
                   Book Consultation
@@ -484,6 +538,7 @@ export default function GermanyServicesWebsite() {
                 <Button
                   size="lg"
                   className="bg-white hover:bg-gray-100 text-orange-600 px-10 py-4 text-lg font-bold rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => setShowInquiryForm(true)}
                 >
                   <Heart className="mr-2 h-5 w-5" />
                   Start My Journey
@@ -492,6 +547,7 @@ export default function GermanyServicesWebsite() {
                   variant="outline"
                   size="lg"
                   className="border-2 border-white text-white hover:bg-white hover:text-orange-600 px-10 py-4 text-lg rounded-full"
+                  onClick={() => setShowInquiryForm(true)}
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   Call Expert
@@ -516,6 +572,238 @@ export default function GermanyServicesWebsite() {
           </div>
         </section>
       </main>
+
+      {/* Inquiry Form Modal */}
+      {showInquiryForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 p-6 rounded-t-3xl relative">
+              <button
+                onClick={() => setShowInquiryForm(false)}
+                className="absolute top-4 right-4 text-white hover:bg-white/20 rounded-full p-2 transition-colors"
+              >
+                <X className="h-6 w-6" />
+              </button>
+              <div className="text-center text-white">
+                <div className="flex items-center justify-center space-x-3 mb-4">
+                  <span className="text-3xl">🇮🇳</span>
+                  <div className="w-8 h-1 bg-white rounded-full"></div>
+                  <span className="text-3xl">🇩🇪</span>
+                </div>
+                <h2 className="text-3xl font-bold mb-2">Start Your German Journey</h2>
+                <p className="text-orange-100">Tell us about your dreams, we'll make them reality</p>
+              </div>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleFormSubmit} className="p-8 space-y-8">
+              {/* Personal Information */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <User className="h-5 w-5 text-orange-500 mr-2" />
+                  Personal Information
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="+91 98765 43210"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Current Location *</label>
+                    <input
+                      type="text"
+                      name="currentLocation"
+                      value={formData.currentLocation}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      placeholder="Mumbai, India"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Relocation Details */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <MapPin className="h-5 w-5 text-green-500 mr-2" />
+                  Relocation Details
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Preferred German City</label>
+                    <select
+                      name="preferredCity"
+                      value={formData.preferredCity}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Select a city</option>
+                      <option value="berlin">Berlin</option>
+                      <option value="munich">Munich</option>
+                      <option value="hamburg">Hamburg</option>
+                      <option value="frankfurt">Frankfurt</option>
+                      <option value="cologne">Cologne</option>
+                      <option value="stuttgart">Stuttgart</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Purpose of Relocation *</label>
+                    <select
+                      name="purpose"
+                      value={formData.purpose}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Select purpose</option>
+                      <option value="work">Work/Employment</option>
+                      <option value="study">Higher Studies</option>
+                      <option value="family">Family Reunion</option>
+                      <option value="business">Business/Investment</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Timeline *</label>
+                    <select
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Select timeline</option>
+                      <option value="immediate">Immediate (1-3 months)</option>
+                      <option value="short">Short term (3-6 months)</option>
+                      <option value="medium">Medium term (6-12 months)</option>
+                      <option value="long">Long term (1+ years)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Services Needed */}
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                  <BriefcaseIcon className="h-5 w-5 text-blue-500 mr-2" />
+                  Services Needed
+                </h3>
+                <div className="grid md:grid-cols-2 gap-3">
+                  {[
+                    { id: "visa", label: "Visa Processing", icon: "📋" },
+                    { id: "job", label: "Job Placement", icon: "💼" },
+                    { id: "housing", label: "Housing & Anmeldung", icon: "🏠" },
+                    { id: "community", label: "Community Support", icon: "👥" },
+                    { id: "language", label: "German Language Classes", icon: "🗣️" },
+                    { id: "banking", label: "Banking & Insurance", icon: "🏦" },
+                  ].map((service) => (
+                    <label
+                      key={service.id}
+                      className="flex items-center space-x-3 p-3 border border-gray-200 rounded-xl hover:bg-gray-50 cursor-pointer transition-colors"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={formData.services.includes(service.id)}
+                        onChange={() => handleServiceToggle(service.id)}
+                        className="w-5 h-5 text-orange-500 rounded focus:ring-orange-500"
+                      />
+                      <span className="text-xl">{service.icon}</span>
+                      <span className="font-medium text-gray-700">{service.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Additional Comments */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Additional Comments</label>
+                <textarea
+                  name="comments"
+                  value={formData.comments}
+                  onChange={handleInputChange}
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
+                  placeholder="Tell us more about your specific needs, concerns, or questions..."
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-4 text-lg rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  <Send className="mr-2 h-5 w-5" />
+                  Send My Inquiry
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setShowInquiryForm(false)}
+                  className="border-2 border-gray-300 text-gray-600 hover:bg-gray-50 py-4 px-8 text-lg rounded-xl"
+                >
+                  Cancel
+                </Button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="bg-gradient-to-r from-orange-50 to-green-50 rounded-2xl p-6 mt-6">
+                <div className="grid md:grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-orange-600">24 Hours</div>
+                    <div className="text-sm text-gray-600">Response Time</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-green-600">100% Free</div>
+                    <div className="text-sm text-gray-600">Initial Consultation</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-blue-600">1000+</div>
+                    <div className="text-sm text-gray-600">Success Stories</div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="w-full py-12 bg-gradient-to-r from-gray-900 to-gray-800">
