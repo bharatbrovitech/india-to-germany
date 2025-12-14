@@ -1,30 +1,54 @@
-# Germany relocation website
+# Germany Relocation Website 🇩🇪
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modern, user-friendly website designed to help individuals and families relocate to **Germany** with clear, structured, and reliable information.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/bharat-chavans-projects-c4929f61/v0-germany-relocation-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/JaN09O83JkZ)
+The platform focuses on simplifying the relocation journey — from understanding visas to settling into daily life in Germany.
 
-## Overview
+---
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## 🌍 Live Website
 
-## Deployment
+👉 **Visit here:**  
+https://v0-germany-relocation-website.vercel.app
 
-Your project is live at:
+---
 
-**[https://vercel.com/bharat-chavans-projects-c4929f61/v0-germany-relocation-website](https://vercel.com/bharat-chavans-projects-c4929f61/v0-germany-relocation-website)**
+## ✨ What This Website Offers
 
-## Build your app
+- Visa & immigration guidance
+- Job and career information
+- Housing & accommodation insights
+- Cost of living & lifestyle details
+- Step-by-step relocation guidance
+- Mobile-first, responsive design
 
-Continue building your app on:
+---
 
-**[https://v0.dev/chat/projects/JaN09O83JkZ](https://v0.dev/chat/projects/JaN09O83JkZ)**
+## 🛠 Technology Stack
 
-## How It Works
+- **Frontend:** Next.js (React)
+- **Styling:** Modern UI components
+- **Hosting & Deployment:** Vercel
+- **Performance:** Fast, SEO-friendly pages
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+---
+
+## 🚀 Deployment
+
+The website is deployed using **Vercel**, ensuring:
+- High availability
+- Fast global delivery
+- Automatic deployments
+
+**Production URL:**  
+https://v0-germany-relocation-website.vercel.app
+
+---
+
+## 💻 Run Locally
+
+Clone the repository and run:
+
+```bash
+npm install
+npm run dev
